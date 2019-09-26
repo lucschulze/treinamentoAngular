@@ -13,6 +13,7 @@ export class Component1{
     public clickSalvar = new EventEmitter();
 
     salvar(botao: number){
+        this.label = "nome - filho";
         this.clickSalvar.next(botao);
     }
 }

@@ -7,6 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   
+
+  labelPai = "Batata";
   printBotao(botao : number){
     console.log(`O botão ${botao} foi clicado`);
   }
