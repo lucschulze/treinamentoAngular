@@ -4,7 +4,7 @@
   "description": "Treinamento angular",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "create":"ng new teste-angular"
   },
   "repository": {
     "type": "git",

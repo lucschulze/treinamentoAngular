@@ -1,3 +1,7 @@
+<button (click)="buscarPosts()">Buscar posts</button>
+
+<hr>
+
 <label>Salário do Programador: {{salario | currency:'BRL':'symbol':'1.4-4'}}</label>
 <div *ngIf="mostrarLinhaCodigo">
  <table [ngClass]="{'table-bordered' : true}">
@@ -34,5 +38,39 @@
       <h2>Nenhum clicado</h2>
     </div>
 </div>
+
+<hr />
+
+
+<form [formGroup]="formulario" (submit)="onSubmit()" novalidate>
+    <label>Nome<span style="color: red">*</span>: </label>
+    <input formControlName="nome" type="text" />
+    <label *ngIf="!formulario.get('nome').pristine && formulario.get('nome').invalid">
+      <span style="color: red">Esse campo é obrigatório!</span>
+    </label>
+    <br />
+    <label>Idade: </label>
+    <input formControlName="idade" type="number" />
+    <br />
+    <div formGroupName="endereco">
+        <label>Rua<span style="color: red">*</span>: </label>
+        <input formControlName="rua" type="text" />
+        <label *ngIf="!formulario.get('endereco.rua').pristine && formulario.get('endereco.rua').invalid">
+            <span style="color: red">Esse campo é obrigatório!</span>
+          </label>
+        <br />
+        <label>Número: </label>
+        <input formControlName="numero" type="number" />
+        <br />
+    </div>
+    <label>Permissões </label>
+    <br>
+    <select style="width: 400px" formArrayName="permissoes" multiple>
+      <option *ngFor="let permissao of permissoes" [value]="permissao">{{permissao}}</option>
+    </select>
+    <br />
+    <button [disabled]="formulario.invalid">Salvar</button>
+</form>
+
 
 <notifications></notifications>
