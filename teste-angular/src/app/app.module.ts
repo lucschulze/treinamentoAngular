@@ -7,6 +7,7 @@ import { PrintDirective } from './directives/print.directive';
 import { ComponentNotification } from './components/component-notification/component-notification.component';
 import { NotificationService } from './service/notification.service';
 import { Notification } from 'rxjs';
+import { arrayToStringPipe } from './pipes/array-to-string.pipe';
 
 
 @NgModule({
@@ -14,13 +15,15 @@ import { Notification } from 'rxjs';
     AppComponent,
     Component1,
     PrintDirective,
-    ComponentNotification
+    ComponentNotification,
+    arrayToStringPipe
   ],
   imports: [
     BrowserModule
   ],
   providers: [
-    NotificationService
+    NotificationService,
+    arrayToStringPipe
   ],
   bootstrap: [AppComponent]
 })

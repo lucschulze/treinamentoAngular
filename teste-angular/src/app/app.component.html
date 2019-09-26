@@ -1,7 +1,9 @@
-<label>{{labelPai}}</label>
+<label>Salário do Programador: {{salario | currency:'BRL':'symbol':'1.4-4'}}</label>
+<br />
+<label>Linhas de código com erro: {{ linhasDeCodigo | arrayToString}}</label>
 <hr/>
 <component-1 
-  [label]="labelPai"
+  label="nome"
   (clickSalvar)="printBotao($event)"
 ></component-1>
 <notifications></notifications>
