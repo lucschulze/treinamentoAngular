@@ -1,4 +1,5 @@
 import { Component, Input, EventEmitter, Output } from '@angular/core';
+import { NotificationService } from 'src/app/service/notification.service';
 
 @Component({
     selector: 'component-1',
@@ -12,8 +13,14 @@ export class Component1{
     @Output()
     public clickSalvar = new EventEmitter();
 
+    constructor(
+        private notificationService: NotificationService
+    ){}
+
     salvar(botao: number){
         this.label = "nome - filho";
-        this.clickSalvar.next(botao);
+        this.notificationService.sendNotification(`
+        Botão ${botao} foi clicado!
+        `);
     }
 }
