@@ -1,9 +1,38 @@
 <label>Salário do Programador: {{salario | currency:'BRL':'symbol':'1.4-4'}}</label>
-<br />
-<label>Linhas de código com erro: {{ linhasDeCodigo | arrayToString}}</label>
+<div *ngIf="mostrarLinhaCodigo">
+ <table [ngClass]="{'table-bordered' : true}">
+   <thead>
+     <tr>
+       <td>Index</td>
+       <td>Número da linha</td>
+     </tr>
+   </thead>
+   <tbody>
+     <tr *ngFor="let numLinha of linhasDeCodigo; let i = index">
+       <td [ngClass]="{'table-bordered' : true}" [ngStyle]="{'border': '1px solid black'}">{{i}}</td>
+       <td [ngStyle]="{'border': '1px solid black'}">{{numLinha}}</td>
+     </tr>
+   </tbody>
+ </table>
+</div>
 <hr/>
 <component-1 
   label="nome"
-  (clickSalvar)="printBotao($event)"
+  (clickSalvar)="atualizarBotaoClicado($event)"
 ></component-1>
+
+<hr />
+
+<div [ngSwitch]="ultimoBotaoClicado">
+  <div *ngSwitchCase="1">
+    <h2>Último clicado foi o 1</h2>
+  </div>
+  <div *ngSwitchCase="2">
+      <h2>Último clicado foi o 2</h2>
+  </div>
+  <div *ngSwitchDefault>
+      <h2>Nenhum clicado</h2>
+    </div>
+</div>
+
 <notifications></notifications>

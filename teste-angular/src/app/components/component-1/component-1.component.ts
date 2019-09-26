@@ -22,5 +22,6 @@ export class Component1{
         this.notificationService.sendNotification(`
         Botão ${botao} foi clicado!
         `);
+        this.clickSalvar.next(botao);
     }
 }

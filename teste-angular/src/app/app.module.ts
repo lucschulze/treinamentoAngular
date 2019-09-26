@@ -6,8 +6,8 @@ import { Component1 } from './components/component-1/component-1.component';
 import { PrintDirective } from './directives/print.directive';
 import { ComponentNotification } from './components/component-notification/component-notification.component';
 import { NotificationService } from './service/notification.service';
-import { Notification } from 'rxjs';
 import { arrayToStringPipe } from './pipes/array-to-string.pipe';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
@@ -19,7 +19,8 @@ import { arrayToStringPipe } from './pipes/array-to-string.pipe';
     arrayToStringPipe
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    CommonModule
   ],
   providers: [
     NotificationService,
