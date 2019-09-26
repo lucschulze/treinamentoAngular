@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import{ FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms'
 import { HttpClient } from '@angular/common/http';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -15,6 +16,7 @@ export class AppComponent implements OnInit{
   public formulario: FormGroup;
 
   private resource = 'https://jsonplaceholder.typicode.com';
+  subscriptionGetPosts: Subscription;
   constructor(
     private formBuilder: FormBuilder,
     private httpClient: HttpClient
@@ -47,10 +49,19 @@ export class AppComponent implements OnInit{
   }
 
   buscarPosts(){
-    this.httpClient.get(`${this.resource}/posts`)
-    .subscribe((posts:any)=>
+    this.subscriptionGetPosts = this.httpClient.get(`${this.resource}/posts`)
+    .subscribe((posts:any)=>{
       console.log(posts)
-    );
+      this.subscriptionGetPosts.unsubscribe();
+    });
+  }
+
+  salvarPost(){
+    this.subscriptionGetPosts = this.httpClient.get(`${this.resource}/posts`)
+    .subscribe((posts:any)=>{
+      console.log(posts)
+      this.subscriptionGetPosts.unsubscribe();
+    });
   }
 
   public ultimoBotaoClicado: number;
